@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Player{
 
 	private String name;
@@ -5,6 +7,10 @@ public class Player{
 	private int position;
 
 	private int money;
+
+    private LinkedList<House>houses;
+
+    private LinkedList<Hotel>hotels;
 
 	public Player(String name){
 		this.name=name;
@@ -29,4 +35,12 @@ public class Player{
 	public void move(int distance){
 		position+=distance;
 	}
+
+    public void addHouse(House house){
+	houses.add(house);
+    }
+
+    public void addHotel(Hotel hotel){
+	hotels.add(hotel);
+    }
 }
