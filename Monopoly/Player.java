@@ -1,8 +1,7 @@
 public class Player{
 
 	private String name;
-
-/**position on board*/
+	
 	private int position;
 
 	private int money;
