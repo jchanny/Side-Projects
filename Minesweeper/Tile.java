@@ -36,6 +36,4 @@ public class Tile{
             flag=true;
     }
 
-	public void doesNothing(){
-	}
 }
