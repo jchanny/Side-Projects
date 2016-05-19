@@ -29,4 +29,13 @@ public class Player{
 	public void move(int distance){
 		position+=distance;
 	}
+
+	public void addHouse(House house){
+		System.out.println("a merge test");
+	}
+
+	public void addHotel(Hotel hotel){
+		System.out.println("a test");
+	}
+
 }
