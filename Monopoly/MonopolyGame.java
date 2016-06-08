@@ -1,11 +1,12 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Board{
+public class MonopolyGame extends JPanel{
+	private static Tile []board;
 
 
 	public static void initialize(){
-	   Tile [] board=new Tile[40];
+	  board=new Tile[40];
 	   //board[0]=go
 	   //board[31]=jail
 	   board[1]=new PropertyTile("Mediterranean Ave", 0, 0, 0, 0, 0, 0, 0 ); 
@@ -37,7 +38,7 @@ public class Board{
 	   board[39]=new PropertyTile("Boardwalk", 0, 0, 0, 0, 0, 0, 0); 
 	   JFrame window=new JFrame();
 	   window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	   window.setSize(1000, 700);
+	   window.setSize(1000,1000);
 	   //board[4]=new Tile("Income Tax", 0, 0, 0, 0, 0, 0, 0 ); 
 		 //  board[5]=new Tile("Reading Railroad", 0, 0, 0, 0, 0, 0, 0 ); 
 		//   board[10]=new Tile("Jail", 0, 0, 0, 0, 0, 0, 0 ); 
@@ -53,14 +54,22 @@ public class Board{
 	   
 	   //drawing the board
 	   
-	   window.getContentPane().add(grid, "Center");
+	   window.getContentPane().add(new MonopolyGame());
 	   
 	   window.setVisible(true);
 	}
 
+	public void paint (Graphics g){
+		g.drawRect(0, 0, 125, 125); //go
+		g.drawRect(0, 1000-250, 125, 125); //jail
+		g.drawRect(1000-145, 0, 125, 125);//park
+		g.drawRect(1000-145, 1000-250, 125, 125);//go to jail
+		int xDim=0;
+		int yDim=0;
+	}
+	
 	public static void main(String []args){
 		initialize();
 	}
 	
 }
-
