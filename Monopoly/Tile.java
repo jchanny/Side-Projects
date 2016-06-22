@@ -41,14 +41,7 @@ public class Tile{
 	}
 	
 	public boolean isPurchaseable(){
-		if(purchaseCost==0 && mortgageValue==0){
-			return false;
-		}
-		return true;
-	}
-	
-	public boolean isBought(){
-		return bought;
+		return !bought;
 	}
 	
 	public int getLandingFee(){
