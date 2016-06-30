@@ -3,22 +3,16 @@ import java.awt.*;
 
 public class ConnectFour extends JPanel{
 	
+	/**
+	 * need to do buffereddrawing in order to get painted connect four board to show up on top of the JButtons--otherwise the
+	 * connect four board appears in the whitespace to the side
+	 */
 	public void paint(Graphics g){
-		g.setColor(Color.YELLOW);
-		g.fillRect(0,0,700,600);
-		for(int loop=0;loop<600)
-		
+	
 	}
 	
 	public static void initialize(){
-		//have a "grid" of jbuttons that represents slots for pieces
-		JButton [][]grid=new JButton[6][7];
-		JFrame frame=new JFrame();
-		frame.setSize(700, 600);
-		frame.setBackground(Color.WHITE);
-		frame.getContentPane().add(new ConnectFour());
-		frame.setTitle("Connect Four!");
-		frame.setVisible(true);
+
 	}
 	
 	public static void main(String[]args){
