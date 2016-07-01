@@ -1,17 +1,20 @@
-import java.util.LinkedList;
+
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
-public class MonopolyGame extends JPanel {
+public class MonopolyGame {
 	private static Tile[] board;
 
-	private static LinkedList<Player> players;
+	private static ArrayList<Player> players;
+
+	private static Player currentPlayer;
 
 	public static void initialize(int numPlayers) {
-		players = new LinkedList<Player>();
+		players = new ArrayList<Player>();
 
 		if (numPlayers == 1) {
 			throw new IllegalArgumentException();
@@ -19,6 +22,8 @@ public class MonopolyGame extends JPanel {
 		for (int loop = 0; loop < numPlayers; loop++) {
 			players.add(new Player(0));
 		}
+
+		currentPlayer = players.get(0);
 
 		board = new Tile[40];
 		// board[0]=go
@@ -47,7 +52,6 @@ public class MonopolyGame extends JPanel {
 		board[39] = new PropertyTile("Boardwalk", 0, 0, 0, 0, 0, 0, 0);
 		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setSize(1000, 1000);
 
 		board[2] = new SpecialTile("Community Chest", 0, 0, 0, 0);
 		board[4] = new SpecialTile("Income Tax", 0, 0, 0, 0);
@@ -66,6 +70,19 @@ public class MonopolyGame extends JPanel {
 		board[22] = new SpecialTile("Chance", 0, 0, 0, 0);
 		board[38] = new SpecialTile("Luxury Tax", 0, 0, 0, 0);
 		board[7] = new SpecialTile("Chance", 0, 0, 0, 0);
+
+	}
+
+	public static Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public static void advancePlayer() {
+		int index = players.indexOf(getCurrentPlayer()) + 1;
+		if (index > players.size() - 1) {
+			currentPlayer = players.get(index - players.size());
+		} else
+			currentPlayer = players.get(index);
 	}
 
 	public static int rollDice() {
@@ -80,6 +97,27 @@ public class MonopolyGame extends JPanel {
 	public static void main(String[] args) {
 		int numPlayers = Integer.parseInt(JOptionPane.showInputDialog("how many people are playing?"));
 		initialize(numPlayers);
+
+		/** main loop for running the program */
+		Scanner reader = new Scanner(System.in);
+		String input;
+		boolean run = true;
+
+		while (run == true) {
+			System.out.println("type roll to roll dice");
+			input = reader.nextLine();
+			// remember to use .equals and not== for Strings/Objects
+			if (input.equals("quit"))
+				run = false;
+			else {
+				if (input.equals("roll")) {
+					getCurrentPlayer().advance(rollDice());
+					System.out.println("Current Player Position:" + currentPlayer.getLocation());
+					advancePlayer();
+				}
+			}
+		}
+
 	}
 
 }

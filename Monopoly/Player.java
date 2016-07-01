@@ -37,7 +37,7 @@ public class Player {
 	}
 
 	/**
-	 * will set player's current location to whatever space is inputted
+	 * to be used when told to not pass go but to jump directly to space
 	 * 
 	 * @param space
 	 */
