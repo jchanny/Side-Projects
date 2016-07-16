@@ -1,0 +1,12 @@
+Currently: 
+LinkedList stores player objects
+	Player objects contain list of properties they own
+	Player object stores index of location of player on board
+	
+Board itself is array of Tiles
+	each tile stores constants & Player that owns
+	
+WHAT I WANT:
+	-how to make it easy to figure out who is current Player
+		-current position of each player is be stored in the
+		Player object

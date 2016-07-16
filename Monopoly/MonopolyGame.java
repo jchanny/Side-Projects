@@ -11,8 +11,13 @@ public class MonopolyGame {
 
 	private static ArrayList<Player> players;
 
-	private static Player currentPlayer;
+	private static int indexOfCurrentPlayer;
 
+	/**
+	 * sets up board[], creates players, sets game up, does not draw GUI
+	 * 
+	 * @param numPlayers
+	 */
 	public static void initialize(int numPlayers) {
 		players = new ArrayList<Player>();
 
@@ -23,7 +28,7 @@ public class MonopolyGame {
 			players.add(new Player(0));
 		}
 
-		currentPlayer = players.get(0);
+		indexOfCurrentPlayer = 0;
 
 		board = new Tile[40];
 		// board[0]=go
@@ -73,16 +78,18 @@ public class MonopolyGame {
 
 	}
 
-	public static Player getCurrentPlayer() {
-		return currentPlayer;
+	/** returns the index of the current player in the players ArrayList */
+	public static int getCurrentPlayer() {
+		return indexOfCurrentPlayer;
 	}
 
-	public static void advancePlayer() {
-		int index = players.indexOf(getCurrentPlayer()) + 1;
+	// for switching players turns, think of something cleaner?
+	public static void switchPlayer() {
+		int index = getCurrentPlayer() + 1;
 		if (index > players.size() - 1) {
-			currentPlayer = players.get(index - players.size());
+			indexOfCurrentPlayer = index - players.size();
 		} else
-			currentPlayer = players.get(index);
+			indexOfCurrentPlayer = index;
 	}
 
 	public static int rollDice() {
@@ -90,8 +97,21 @@ public class MonopolyGame {
 		return (r.nextInt(5) + 1) + (r.nextInt(5) + 1);
 	}
 
-	public static void purchaseProperty() {
-
+	/**
+	 * checks if currentPlayer can afford to purchase property, then adds
+	 * property (player's current location) to Player's individual property list
+	 * and sets the current Player as the owner in the actual property tile
+	 */
+	public static String purchaseProperty() {
+		if (board[players.get(getCurrentPlayer()).getLocation()].isPurchaseable() && players.get(getCurrentPlayer())
+				.getBalance() >= board[players.get(getCurrentPlayer()).getLocation()].getPurchaseCost()) {
+			board[players.get(getCurrentPlayer()).getLocation()].buyProperty(players.get(getCurrentPlayer()));
+			players.get(getCurrentPlayer()).addProperty(players.get(getCurrentPlayer()).getLocation());
+			players.get(getCurrentPlayer())
+					.loseMoney(board[players.get(getCurrentPlayer()).getLocation()].getPurchaseCost());
+			return "successful purchase";
+		} else
+			return "property cannot be purchased";
 	}
 
 	public static void main(String[] args) {
@@ -111,13 +131,22 @@ public class MonopolyGame {
 				run = false;
 			else {
 				if (input.equals("roll")) {
-					getCurrentPlayer().advance(rollDice());
-					System.out.println("Current Player Position:" + currentPlayer.getLocation());
-					advancePlayer();
+					players.get(getCurrentPlayer()).advance(rollDice());
+					// need to check whether or not another player is owed rent
+					// money
+					System.out.println("Current Player Position:" + players.get(getCurrentPlayer()).getLocation());
+					switchPlayer();
 				}
 			}
 		}
 
+	}
+
+	/**
+	 * for testing only returns arraylist of players
+	 */
+	public ArrayList<Player> getPlayers() {
+		return players;
 	}
 
 }

@@ -2,8 +2,8 @@ public class Player {
 
 	private long bankAccount;
 
-	/** array of Tile objects representing properties player owns */
-	private Tile[] properties;
+	/** if player owns property @space X, then properties[X]=true */
+	private boolean[] properties;
 
 	private int location;
 
@@ -14,13 +14,13 @@ public class Player {
 	public Player(long initialAmount) {
 		location = 0;
 		bankAccount = initialAmount;
-		properties = new Tile[28];
+		properties = new boolean[40];
 		for (int loop = 0; loop < properties.length; loop++) {
-			properties[loop] = null;
+			properties[loop] = false;
 		}
 	}
 
-	public long balance() {
+	public long getBalance() {
 		return bankAccount;
 	}
 
@@ -59,4 +59,12 @@ public class Player {
 		}
 	}
 
+	public void addProperty(int space) {
+		properties[space] = true;
+	}
+
+	/** for testing purposes */
+	public boolean[] returnProperties() {
+		return properties;
+	}
 }
