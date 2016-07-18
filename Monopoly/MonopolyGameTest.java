@@ -28,6 +28,25 @@ public class MonopolyGameTest {
 		test.getPlayers().get(test.getCurrentPlayer()).advance(3);
 		assertTrue("not switching players", test.getPlayers().get(0).getLocation() == 2);
 		assertTrue("not switching players", test.getPlayers().get(1).getLocation() == 3);
+		test.switchPlayer();
+		test.getPlayers().get(test.getCurrentPlayer()).advance(3);
+		test.switchPlayer();
+		test.getPlayers().get(test.getCurrentPlayer()).advance(3);
+		assertTrue("switching behavior weird", test.getPlayers().get(0).getLocation() == 5);
+		assertTrue("switching behavior off", test.getPlayers().get(1).getLocation() == 6);
+		test.purchaseProperty();
+		assertTrue("player unable to buy property", test.getPlayers().get(1).returnProperties()[6] == true);
+		assertTrue("payment for property purchase doesn't occur", test.getPlayers().get(1).getBalance() == 150);
+		test.switchPlayer();
+		test.getPlayers().get(test.getCurrentPlayer()).advance(1);
+		test.purchaseProperty();
+		assertTrue("player able to buy property that has already been purchased",
+				test.getPlayers().get(0).returnProperties()[6] == false);
+	}
+
+	@Test
+	public void testBuyHouseHotel() {
+
 	}
 
 }

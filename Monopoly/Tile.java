@@ -17,7 +17,13 @@ public class Tile {
 
 	private Player owner;
 
-	public Tile(String name, int purchaseCost, int mortgageValue, int landingFee) {
+	private int houseCount;
+
+	private int hotelCount;
+
+	private int houseCost;
+
+	public Tile(String name, int purchaseCost, int mortgageValue, int landingFee, int houseCost) {
 		this.name = name;
 		this.purchaseCost = purchaseCost;
 		bought = false;
@@ -25,6 +31,9 @@ public class Tile {
 		mortgaged = false;
 		this.landingFee = landingFee;
 		owner = null;
+		houseCount = 0;
+		hotelCount = 0;
+		this.houseCost = houseCost;
 	}
 
 	public String getName() {
@@ -60,4 +69,23 @@ public class Tile {
 		return owner;
 	}
 
+	public int numHouses() {
+		return houseCount;
+	}
+
+	public int numHotels() {
+		return hotelCount;
+	}
+
+	public int getHouseCost() {
+		return houseCost;
+	}
+
+	public void addHouse() {
+		houseCount++;
+	}
+
+	public void addHotel() {
+		hotelCount++;
+	}
 }

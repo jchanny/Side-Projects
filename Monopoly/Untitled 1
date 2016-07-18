@@ -7,6 +7,13 @@ Board itself is array of Tiles
 	each tile stores constants & Player that owns
 	
 WHAT I WANT:
-	-how to make it easy to figure out who is current Player
-		-current position of each player is be stored in the
-		Player object
+-find a way to access PropertyTile methods
+	-board[] is for Tile objects;
+	the problem is when accessing board[]
+	to access property data, you can only get
+	Tile's methods. Cannot use PropertyTile's
+	or SpecialTile's methods. 
+	-current workaround is to put methods 
+	that are supposed to be in PropertyTile
+	into Tile
+		-this isn't good for SpecialTile

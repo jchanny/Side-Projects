@@ -9,7 +9,7 @@ public class SpecialTile extends Tile {
 	 *            6=utility, 7=railroad, 8=tax
 	 */
 	public SpecialTile(String name, int type, int purchaseCost, int mortgageValue, int landingFee) {
-		super(name, purchaseCost, mortgageValue, landingFee);
+		super(name, purchaseCost, mortgageValue, landingFee, 0);
 		this.type = type;
 	}
 
