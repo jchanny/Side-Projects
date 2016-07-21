@@ -4,12 +4,12 @@ public class SpecialTile extends Tile {
 	private int type;
 
 	/**
-	 * @param type
+	 * @param types
 	 *            1=chance, 2=treasure chest, 3=jail, 4=parking, 5=go to jail,
 	 *            6=utility, 7=railroad, 8=tax
 	 */
 	public SpecialTile(String name, int type, int purchaseCost, int mortgageValue, int landingFee) {
-		super(name, purchaseCost, mortgageValue, landingFee, 0);
+		super(name, purchaseCost, mortgageValue, landingFee);
 		this.type = type;
 	}
 
@@ -41,4 +41,5 @@ public class SpecialTile extends Tile {
 		}
 		return "";
 	}
+
 }

@@ -33,28 +33,28 @@ public class MonopolyGame {
 		board = new Tile[40];
 		// board[0]=go
 		board[0] = new SpecialTile("Go!", 0, 0, 0, 0);
-		board[1] = new PropertyTile("Mediterranean Ave", 60, 50, 0, 0, 0, 0);
-		board[3] = new PropertyTile("Baltic Ave", 60, 50, 0, 0, 0, 0);
-		board[6] = new PropertyTile("Oriental Ave", 100, 50, 0, 0, 0, 0);
-		board[8] = new PropertyTile("Vermont Ave", 100, 50, 0, 0, 0, 0);
-		board[9] = new PropertyTile("Conneticut Ave", 120, 50, 0, 0, 0, 0);
-		board[11] = new PropertyTile("St.Charles Place", 140, 100, 0, 0, 0, 0);
-		board[13] = new PropertyTile("States Ave", 140, 100, 0, 0, 0, 0);
-		board[14] = new PropertyTile("Virginia Ave", 160, 100, 0, 0, 0, 0);
-		board[16] = new PropertyTile("St. James Place", 180, 100, 0, 0, 0, 0);
-		board[18] = new PropertyTile("Tennesse Ave", 180, 100, 0, 0, 0, 0);
-		board[19] = new PropertyTile("New York Ave", 200, 100, 0, 0, 0, 0);
-		board[21] = new PropertyTile("Kentucky Ave", 220, 150, 0, 0, 0, 0);
-		board[23] = new PropertyTile("Indiana Ave", 220, 150, 0, 0, 0, 0);
-		board[24] = new PropertyTile("Illinois Ave", 240, 150, 0, 0, 0, 0);
-		board[26] = new PropertyTile("Atlantic Ave", 260, 150, 0, 0, 0, 0);
-		board[27] = new PropertyTile("Ventnor Ave", 260, 150, 0, 0, 0, 0);
-		board[29] = new PropertyTile("Marvin Gardens", 280, 150, 0, 0, 0, 0);
-		board[31] = new PropertyTile("Pacific Ave", 300, 200, 0, 0, 0, 0);
-		board[32] = new PropertyTile("North Carolina Ave", 300, 200, 0, 0, 0, 0);
-		board[34] = new PropertyTile("Pennysylvania Ave", 320, 200, 0, 0, 0, 0);
-		board[37] = new PropertyTile("Park Place", 350, 200, 0, 0, 0, 0);
-		board[39] = new PropertyTile("Boardwalk", 400, 200, 0, 0, 0, 0);
+		board[1] = new PropertyTile("Mediterranean Ave", 60, 50, 0, 0);
+		board[3] = new PropertyTile("Baltic Ave", 60, 50, 0, 0);
+		board[6] = new PropertyTile("Oriental Ave", 100, 50, 0, 0);
+		board[8] = new PropertyTile("Vermont Ave", 100, 50, 0, 0);
+		board[9] = new PropertyTile("Conneticut Ave", 120, 50, 0, 0);
+		board[11] = new PropertyTile("St.Charles Place", 140, 100, 0, 0);
+		board[13] = new PropertyTile("States Ave", 140, 100, 0, 0);
+		board[14] = new PropertyTile("Virginia Ave", 160, 100, 0, 0);
+		board[16] = new PropertyTile("St. James Place", 180, 100, 0, 0);
+		board[18] = new PropertyTile("Tennesse Ave", 180, 100, 0, 0);
+		board[19] = new PropertyTile("New York Ave", 200, 100, 0, 0);
+		board[21] = new PropertyTile("Kentucky Ave", 220, 150, 0, 0);
+		board[23] = new PropertyTile("Indiana Ave", 220, 150, 0, 0);
+		board[24] = new PropertyTile("Illinois Ave", 240, 150, 0, 0);
+		board[26] = new PropertyTile("Atlantic Ave", 260, 150, 0, 0);
+		board[27] = new PropertyTile("Ventnor Ave", 260, 150, 0, 0);
+		board[29] = new PropertyTile("Marvin Gardens", 280, 150, 0, 0);
+		board[31] = new PropertyTile("Pacific Ave", 300, 200, 0, 0);
+		board[32] = new PropertyTile("North Carolina Ave", 300, 200, 0, 0);
+		board[34] = new PropertyTile("Pennysylvania Ave", 320, 200, 0, 0);
+		board[37] = new PropertyTile("Park Place", 350, 200, 0, 0);
+		board[39] = new PropertyTile("Boardwalk", 400, 200, 0, 0);
 		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -114,7 +114,15 @@ public class MonopolyGame {
 			return "property cannot be purchased";
 	}
 
+	/**
+	 * method checks to make sure that player has enough money to purchase house
+	 * then subtracts cost of house from player's bank account, then calls
+	 * addHouse on the tile on which house is purchased; all addHouse does is
+	 * increase Housecount
+	 */
 	public static boolean purchaseHouse() {
+		// need to check to make sure that can't call purchaseHotel on
+		// SpecialTile
 		if (board[players.get(getCurrentPlayer()).getLocation()].getOwner().equals(players.get(getCurrentPlayer()))) {
 			players.get(getCurrentPlayer())
 					.loseMoney(board[players.get(getCurrentPlayer()).getLocation()].getHouseCost());
@@ -124,7 +132,14 @@ public class MonopolyGame {
 		return false;
 	}
 
+	/**
+	 * method checks to make sure 4 houses already owned, then checks to make
+	 * sure person can afford hotel hotel cost=house cost the 4 houses to 1
+	 * hotel swap is done in PropertyTile's addHotel method
+	 */
 	public static boolean purchaseHotel() {
+		// need to check to make sure that can't call purchaseHotel on
+		// SpecialTile
 		if (board[players.get(getCurrentPlayer()).getLocation()].numHouses() < 4) {
 			return false;
 		}
@@ -135,6 +150,26 @@ public class MonopolyGame {
 		players.get(getCurrentPlayer()).loseMoney(board[players.get(getCurrentPlayer()).getLocation()].getHouseCost());
 		board[players.get(getCurrentPlayer()).getLocation()].addHotel();
 		return true;
+	}
+
+	/**
+	 * deducts the rent fee from current player (determined by the landingFee
+	 * methods in PropertyTile/SpecialTile), then switches player
+	 */
+	public static void chargeRent() {
+		/**
+		 * 1. check to make sure property is owned a. call getOwner to see who
+		 * is owed 2. access PropertyTile's methods to see how much rent should
+		 * be charged
+		 */
+		Tile currentLocation = board[players.get(getCurrentPlayer()).getLocation()];
+		if (currentLocation.getOwner().equals(null)) {
+
+		} else {
+			players.get(getCurrentPlayer()).loseMoney(currentLocation.getLandingFee());
+			currentLocation.getOwner().addMoney(currentLocation.getLandingFee());
+			switchPlayer();
+		}
 	}
 
 	public static void main(String[] args) {

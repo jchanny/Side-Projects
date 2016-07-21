@@ -13,7 +13,15 @@ WHAT I WANT:
 	to access property data, you can only get
 	Tile's methods. Cannot use PropertyTile's
 	or SpecialTile's methods. 
+		-make these methods abstract in Tile
 	-current workaround is to put methods 
 	that are supposed to be in PropertyTile
 	into Tile
 		-this isn't good for SpecialTile
+		
+-landing fee should belon to the tile
+-getHouseCost needs to be addressed
+
+-how to make sure I cant purchaseHotel() or 
+call purchaseHouse() on SpecialTile
+	-use reflection to check on its class

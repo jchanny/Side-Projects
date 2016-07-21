@@ -60,4 +60,23 @@ public class Tile {
 		return owner;
 	}
 
+	public void addHouse() {
+
+	}
+
+	public void addHotel() {
+
+	}
+
+	public int getHouseCost() {
+		return 0;
+	}
+
+	public int numHouses() {
+		return 0;
+	}
+
+	public int numHotels() {
+		return 0;
+	}
 }
