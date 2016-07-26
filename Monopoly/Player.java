@@ -7,6 +7,8 @@ public class Player {
 
 	private int location;
 
+	private boolean inJail;
+
 	/**
 	 * @param initialAmount
 	 *            how much money each player starts with
@@ -18,6 +20,7 @@ public class Player {
 		for (int loop = 0; loop < properties.length; loop++) {
 			properties[loop] = false;
 		}
+		inJail = false;
 	}
 
 	public long getBalance() {
@@ -43,19 +46,24 @@ public class Player {
 	 */
 	public void goToSpace(int space) {
 		location = space;
+		if (space == 10) {
+			inJail = true;
+		}
 	}
 
 	/**
-	 * advances player's position by numSpaces
-	 * 
-	 * @param numSpaces
-	 * @return true if go is passed; false if go is not passed
+	 * advances player's position by numSpaces will also move player to Jail
+	 * space if player advances to go Jail
 	 */
 	public void advance(int numSpaces) {
 		location += numSpaces;
 		if (location >= 40) {
 			location = location - 40;
 			bankAccount += 200;
+		}
+		if (location == 31) {
+			location = 10;
+			inJail = true;
 		}
 	}
 
@@ -66,5 +74,13 @@ public class Player {
 	/** for testing purposes */
 	public boolean[] returnProperties() {
 		return properties;
+	}
+
+	public boolean isInJail() {
+		return inJail;
+	}
+
+	public void noLongerInJail() {
+		inJail = false;
 	}
 }

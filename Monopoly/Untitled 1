@@ -5,23 +5,33 @@ LinkedList stores player objects
 	
 Board itself is array of Tiles
 	each tile stores constants & Player that owns
-	
-WHAT I WANT:
--find a way to access PropertyTile methods
-	-board[] is for Tile objects;
-	the problem is when accessing board[]
-	to access property data, you can only get
-	Tile's methods. Cannot use PropertyTile's
-	or SpecialTile's methods. 
-		-make these methods abstract in Tile
-	-current workaround is to put methods 
-	that are supposed to be in PropertyTile
-	into Tile
-		-this isn't good for SpecialTile
+---------------------------------------
 		
 -landing fee should belon to the tile
 -getHouseCost needs to be addressed
 
+-roll dice now moves the player
 -how to make sure I cant purchaseHotel() or 
 call purchaseHouse() on SpecialTile
 	-use reflection to check on its class
+------------------------------------------
+TO BE DONE:
+	-adjust rent to reflect number of houses
+	/hotels owned
+	-chance/community chest
+	-main game loop
+	-drawing board
+	-mortgage option
+	-selling property/houses
+	-make the dice individual 
+TEST:
+	-buy hotel/house
+		-buy hotel/house when property not owned
+		-buy hotel when <4 houses owned
+	-charge rent
+		-rent won't be charged if prop. owner
+		in jail
+	-roll dice
+		
+
+	

@@ -92,9 +92,26 @@ public class MonopolyGame {
 			indexOfCurrentPlayer = index;
 	}
 
-	public static int rollDice() {
+	public static int rollDiceOne() {
 		Random r = new Random();
-		return (r.nextInt(5) + 1) + (r.nextInt(5) + 1);
+		return (r.nextInt(5) + 1);
+	}
+
+	public static int rollDiceTwo() {
+		Random r = new Random();
+		return (r.nextInt(5) + 1);
+	}
+
+	/**
+	 * rollDice will roll Dice one and two, then advance currentPlayer then
+	 * switches currentPlayer if necessary (no doubles rolled)
+	 */
+	public static void rollDice() {
+		int x = rollDiceOne();
+		int y = rollDiceTwo();
+		players.get(getCurrentPlayer()).advance(x + y);
+		if (x != y)
+			switchPlayer();
 	}
 
 	/**
@@ -157,18 +174,17 @@ public class MonopolyGame {
 	 * methods in PropertyTile/SpecialTile), then switches player
 	 */
 	public static void chargeRent() {
-		/**
-		 * 1. check to make sure property is owned a. call getOwner to see who
-		 * is owed 2. access PropertyTile's methods to see how much rent should
-		 * be charged
-		 */
 		Tile currentLocation = board[players.get(getCurrentPlayer()).getLocation()];
 		if (currentLocation.getOwner().equals(null)) {
 
 		} else {
-			players.get(getCurrentPlayer()).loseMoney(currentLocation.getLandingFee());
-			currentLocation.getOwner().addMoney(currentLocation.getLandingFee());
-			switchPlayer();
+			if (currentLocation.getOwner().isInJail() == true) {
+				// no rent charged if owner is in Jail
+			} else {
+				players.get(getCurrentPlayer()).loseMoney(currentLocation.getLandingFee());
+				currentLocation.getOwner().addMoney(currentLocation.getLandingFee());
+				switchPlayer();
+			}
 		}
 	}
 
@@ -189,7 +205,7 @@ public class MonopolyGame {
 				run = false;
 			else {
 				if (input.equals("roll")) {
-					players.get(getCurrentPlayer()).advance(rollDice());
+					rollDice();
 					// need to check whether or not another player is owed rent
 					// money
 					System.out.println("Current Player Position:" + players.get(getCurrentPlayer()).getLocation());
