@@ -188,6 +188,10 @@ public class MonopolyGame {
 		}
 	}
 
+	public static void mortgageProperty() {
+
+	}
+
 	public static void main(String[] args) {
 		int numPlayers = Integer.parseInt(JOptionPane.showInputDialog("how many people are playing?"));
 		initialize(numPlayers);

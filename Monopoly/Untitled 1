@@ -28,9 +28,6 @@ TEST:
 	-buy hotel/house
 		-buy hotel/house when property not owned
 		-buy hotel when <4 houses owned
-	-charge rent
-		-rent won't be charged if prop. owner
-		in jail
 	-roll dice
 		
 
