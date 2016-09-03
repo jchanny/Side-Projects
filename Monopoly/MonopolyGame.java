@@ -1,12 +1,12 @@
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-public class MonopolyGame {
+public class MonopolyGame extends JPanel {
 	private static Tile[] board;
 
 	private static ArrayList<Player> players;
@@ -57,7 +57,6 @@ public class MonopolyGame {
 		board[39] = new PropertyTile("Boardwalk", 400, 200, 0, 0);
 		JFrame window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		board[2] = new SpecialTile("Community Chest", 0, 0, 0, 0);
 		board[4] = new SpecialTile("Income Tax", 0, 0, 0, 0);
 		board[5] = new SpecialTile("Reading Railroad", 0, 200, 0, 0);
