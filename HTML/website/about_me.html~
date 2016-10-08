@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> About me </title>
+    <link type="text/css" rel="stylesheet" href="website.css"/>
+  </head>
+  <body>
+    
+    <p> Hi there! I'm Jeremy Chan, and I am a sophomore Computer
+      Science Student at Case Western Reserve University. I'm
+      from San Jose but I currently live in Cleveland.  </p>
+
+    <h3>Stuff I know </h3>
+    <o1>
+      <li>HTML & CSS. It's how I made this website. Thanks Codecademy! </li>
+      <li> Java. I have over 2 years of Java programming experience.
+	<o1>
+	  So far I've taken or am currently taking:
+	  <li> AP Computer Science</li>
+	  <li> Data Structures</li>
+	  <li> Discrete Math</li>
+	</o1>
+      </li>
+      
+    </o1>
+    
+    <h3> My activities </h3>
+    <o1>
+      <li>I'm currently on my school's rocket team</li>
+      <p> Last year I was on the team's rover group, where I designed
+	the maker dropper system for the rover that was used in the
+	Battle of the Rockets competition. </p>
+    </o1>
+
+  </body>
+</html>
