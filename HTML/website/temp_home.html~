@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Howdy!</title>
+    <link type="text/css" rel="stylesheet" href="website.css"/>
+  </head>
+  
+  <body>
+    <p>Salutations! Welcome to my website!. This is a bit of a work in progress, so apologies if this seems rather sparse. </p>
+
+    <a href="about_me.html"> About me</a>
+  </body>
+  
+</html>
