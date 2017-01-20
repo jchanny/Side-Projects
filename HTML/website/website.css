@@ -3,6 +3,20 @@
     font-family:sans-serif;
     text-decoration:none;
 }
+html, body{
+    height:100%;
+}
+.main{
+    min-height:100%;
+    margin-bottom:-40px;
+}
+.main:after{
+    content:"";
+    display:block;
+}
+.footer,.main:after{
+    height:40px;
+}
 p{
     font-size:18px;
 }
@@ -25,10 +39,6 @@ ul{
     /*how do i keep the indent for all lines, not just first*/
     text-indent:30px;
     font-size:16px;
-}
-.footer{
-    position:fixed;
-    bottom:0;
 }
 .footer span{/*top right bottom left*/
     margin: 0 80px 20px 80px;
