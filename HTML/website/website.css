@@ -17,15 +17,26 @@ html, body{
 .footer,.main:after{
     height:40px;
 }
-.img{
-    transform:rotate(90deg);
+img{
     height:auto;
     width:auto;
-    max-width:500px;
-    max-height:500px;
+    max-height:450px;
+    max-width:450px;
+     transform:rotate(90deg);
 }
-#img_space{
-    margin: 10px 0 10px 0;
+#td1{
+    width:400px;
+    height:0px;
+}
+#img1{
+    position:absolute;
+    left:-5px;
+    top:85px;
+}
+#img_caption1{
+    position:absolute;
+    top:465px;
+    left:150px;
 }
 p{
     font-size:18px;
