@@ -17,6 +17,16 @@ html, body{
 .footer,.main:after{
     height:40px;
 }
+.img{
+    transform:rotate(90deg);
+    height:auto;
+    width:auto;
+    max-width:500px;
+    max-height:500px;
+}
+#img_space{
+    margin: 10px 0 10px 0;
+}
 p{
     font-size:18px;
 }
@@ -39,6 +49,12 @@ ul{
     /*how do i keep the indent for all lines, not just first*/
     text-indent:30px;
     font-size:16px;
+}
+#left_footer{
+    margin: 0 0 0 20px;
+}
+#left_footer2{
+    margin: 0 0 0 50px;
 }
 .footer span{/*top right bottom left*/
     margin: 0 80px 20px 80px;
