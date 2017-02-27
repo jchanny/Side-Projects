@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head> <title>Current Projects</title>
+    <link type="text/css" rel="stylesheet" href="website.css"/>
+  </head>
+  <body>
+    <div class="main">
+      <div class="list">
+	<h3>What I'm up to right now:</h3>
+	<u1>
+	  <li>Learning Arduino/C. Currently trying to write drivers for the sensors the Rocket Team's Planetary Lander.</li>
+	  <li>Learning python + playing with different libraries for Data Analytics </li>
+	  <li>Playing around with Linux: I figure the best way to learn how to configure and use linux is to force yourself to use it daily. </li>
+	</u1>
+      </div>
+    </div>
+    
+        <div class="footer">
+      <span id="left footer"></span>
+      <a href="home.html"> Homepage </a>
+      <span></span>
+      <a href="about_me.html"> About me </a>
+      <span></span>
+      <a href="https://github.com/jchanny"> My GitHub</a>
+      <span></span>
+    <a href="https://www.linkedin.com/in/jeremy-chan-64248493"> My LinkedIn </a>
+      <span></span>
+      <a href="dev_notes.html"> Development Notes</a>
+   </div>
+
+    
+  </body>
+  
+</html>
