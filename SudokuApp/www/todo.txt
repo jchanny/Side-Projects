@@ -1,0 +1,12 @@
+Finished:
+-method for checking for number horizontally
+-method for checking for number vertically
+-method for checking if number can be placed in certain space
+
+---------------------------------------------------
+TODO:
+
+-need to check what numbers can still be placed in cube
+-need to check what spaces are still open in cube
+-need to create method that places correct number into a cube by
+      calling the check methods
